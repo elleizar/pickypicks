@@ -1,27 +1,37 @@
-import { Component  } from "react";
+import { Component } from "react";
 import { Link } from 'react-router-dom';
 import background from '../images/background.png';
+import logo from '../images/favicon.ico';
 import '../css/Home.css';
 
 export class HomePage extends Component {
   render() {
     return (
-      <div className="HomePage">
-        <h1 className="home-header">
-          PICKY PICKS
-        </h1>
-        <h2 className="home-subheader">
-          for picky eaters.
-        </h2>
-        <img src={background} className="home-bg" alt="bg" />
+      <div className="HomePage" style={{
+        backgroundImage: `url(${background})`,
+        backgroundPosition: 'right',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat'
+      }}>
+        <div className="home-header-container">
+          <img src={logo} className="home-logo" alt="bg" />
+          <div className="home-text">
+            <h1 className="home-header">
+              PICKY PICKS
+            </h1>
+            <h2 className="home-subheader">
+              for picky eaters
+            </h2>
+          </div>
+        </div>
         <p className="body-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fermentum sem eget molestie lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean felis orci, auctor in faucibus vitae, fringilla nec ex. In non tellus non leo finibus fermentum ut a ipsum. Duis a diam sed ex feugiat fermentum.
+          Have ingredients that you love but don't know what to make of them? Your options will now be limited to 3.
         </p>
-        <br/>
+        <br />
         <Link to='/recipes'>
-          <button 
+          <button
             className="getButton">
-              Get Recipes!
+            Get Recipes!
           </button>
         </Link>
       </div>
