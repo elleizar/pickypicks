@@ -1,4 +1,3 @@
-import { Component } from "react";
 import { Link } from 'react-router-dom';
 import background from '../images/background.png';
 import background2 from '../images/background2.png';
@@ -28,7 +27,7 @@ export const HomePage = () => {
         </div>
       </div>
       <p className="body-text">
-        Have ingredients that you love but don't know what to make of them? Your options will now be limited to 3.
+        Have ingredients that you love but don't know what to make of them? <em>pickypicks</em> will picky pick some recipes for you!
       </p>
       <br />
       <Link to='/recipes'>
