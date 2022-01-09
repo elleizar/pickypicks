@@ -11,8 +11,8 @@ export const HomePage = () => {
   return (
     <div className="HomePage" style={{
       backgroundImage: `url(${bg[rand]})`,
-      backgroundPosition: 'right',
-      backgroundSize: 'cover',
+      backgroundPosition: 'right bottom',
+      backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat'
     }}>
       <div className="home-header-container">

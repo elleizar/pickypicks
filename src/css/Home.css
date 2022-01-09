@@ -51,7 +51,7 @@ h2 {
 }
 
 .home-text {
-  margin-left: 3em;
+  margin-left: 2em;
   align-self: center;
 }
 
@@ -60,7 +60,6 @@ h2 {
 }
 
 .body-text {
-  padding-top: 1em;
   padding-bottom: 1em;
   font-family: "GlacialIndifference", "Arial";
   font-size: 1.3em;
