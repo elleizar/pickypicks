@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { recipeData } from "../recipes";
+import logo from '../images/favicon.ico';
 
 export const IngredientsInputs = () => {
   const [inputList, setInputList] = useState([{ ingredient: "" }]);
@@ -26,14 +27,15 @@ export const IngredientsInputs = () => {
     // create list of ingredients
     input.forEach((ing) => {
       if (ing.ingredient.length) {
-        ingList.push(ing.ingredient);
+        if (!ingList.includes(ing.ingredient)) {
+          ingList.push(ing.ingredient);
+        }
       }
     });
 
     // check if ingredient in list is in recipe
     ingList.forEach((ing) => {
       recipeData.forEach((rec) => {
-        console.log(ing, rec.ingredients)
         if (rec.ingredients.toLowerCase().includes(ing.toLowerCase())) {
           if (!recList.includes(rec)) {
             //push into recList if yes and not a duplicate
@@ -71,24 +73,6 @@ export const IngredientsInputs = () => {
     }
   }
 
-  const checkIfImageExists = (url) => {
-    var http = new XMLHttpRequest();
-    http.open('GET', url, true);
-    http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-    http.setRequestHeader('Accept', '*/*');
-    http.setRequestHeader('Access-Control-Allow-Origin', '*');
-    http.send();
-
-    console.log(http)
-    if (http.status !== 404 || http.status !== 500 || http.status !== 301) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
-
-
   return (
     <>
       <div className="input-form">
@@ -98,39 +82,59 @@ export const IngredientsInputs = () => {
               <div className="input-ingredient">
                 <input
                   name="ingredient"
-                  placeholder="Enter Ingredient"
+                  placeholder="Enter ingredient"
                   value={x.ingredient}
                   onChange={e => handleInputChange(e, i)}
                 />
               </div>
             );
           })}
-          
+
           <div>
             {inputList.length < 3 && <button className="add-button" onClick={handleAddClick}>+</button>}
           </div>
-          
+
         </div>
 
         <button className="get-button" onClick={e => showRecipes(inputList)}>Get Recipes!</button>
-        {console.log(JSON.stringify(inputList))}
       </div>
 
-      <div className="recipe-container">
-        {/* error */}
-        {error.e && error.m}
+      {/* error */}
+      {error.e &&
+        <div className="error-message">
+          {error.m}
+        </div>
+      }
 
+      {displayRecipes &&
+        <div className="tip">
+          Don't like these recipes? Click Get Recipes again!
+        </div>
+      }
+      <div className="recipe-container">
         {/* recipe card */}
         {displayRecipes && recipes.map((rec, key) => {
           return (
             <div className="recipe-card" key={key}>
               <a className="recipe-url" href={rec.url} target="_blank" rel="noreferrer">
-                {/* check if image exists, else replace with logo (doesn't work yet)*/}
-                {checkIfImageExists(rec.image) ? <img className="recipe-image" width="320px" height="250px" src={rec.image} alt={rec.name} /> : <img className="recipe-image" width="320px" height="250px" src="https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg" alt={rec.name} />
-                }
+                {/* check if image exists, else replace with logo */}
+                <img
+                  className="recipe-image"
+                  width="320px"
+                  height="250px"
+                  src={rec.image}
+                  alt={rec.name}
+                  onError={(event) => {
+                    event.target.src = logo
+                    event.onError = null
+                  }}
+                />
                 <br />
                 <div className="recipe-name">{rec.name}</div>
                 <br />
+                <div className="recipe-ing-header">
+                  Ingredients
+                </div>
                 <div className="recipe-ingredients">{rec.ingredients}</div>
               </a>
             </div>

@@ -1,91 +1,129 @@
 @font-face {
-    font-family: 'GlacialIndifference';
-    src: url('../fonts/GlacialIndifference-Regular.otf');
+  font-family: 'GlacialIndifference';
+  src: url('../fonts/GlacialIndifference-Regular.otf');
 }
 
 @font-face {
-    font-family: 'GlacialIndifference-Bold';
-    src: url('../fonts/GlacialIndifference-Bold.otf');
+  font-family: 'GlacialIndifference-Bold';
+  src: url('../fonts/GlacialIndifference-Bold.otf');
 }
 
 @font-face {
-    font-family: 'GlacialIndifference-Italic';
-    src: url('../fonts/GlacialIndifference-Italic.otf');
+  font-family: 'GlacialIndifference-Italic';
+  src: url('../fonts/GlacialIndifference-Italic.otf');
 }
 
 h1 {
-    font-family: "GlacialIndifference-Bold", "Arial";
-    font-size: 3.5em;
-    letter-spacing: 0.1em;
-    margin-top: 0em;
-    margin-bottom: 0.02em;
-    padding-top: 1.2em;
+  font-family: "GlacialIndifference-Bold", "Arial";
+  font-size: 3.5em;
+  letter-spacing: 0.1em;
+  margin-top: 0em;
+  margin-bottom: 0.02em;
+  padding-top: 1.2em;
 }
 
 h2 {
-    font-family: "GlacialIndifference", "Arial";
-    font-size: 2em;
-    font-weight: 400;
-    letter-spacing: 0.15em;
-    margin-top: 0px;
-    margin-bottom: 1.2em;
+  font-family: "GlacialIndifference", "Arial";
+  font-size: 2em;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  margin-top: 0px;
+  margin-bottom: 1.2em;
 }
 
 .RecipesPage {
-    min-height: 100vh;
-    background-color: #BDE2E6;
-    text-align: center;
+  min-height: 100vh;
+  max-height: auto;
+  background-color: #BDE2E6;
+  text-align: center;
 }
 
-.instructions {
-    font-family: "GlacialIndifference", "Arial";
-    font-size: 1.3em;
-    line-height: 1.3;
-    margin-top: 0.5em;
+.instructions, .error-message, .tip, .recipe-card {
+  font-family: "GlacialIndifference", "Arial";
+  font-size: 1.3em;
+  line-height: 1.3;
+  margin-top: 0.5em;
+}
+
+.recipe-ingredients {
+  font-family: "GlacialIndifference", "Arial";
+  font-size: 0.8em;
+  line-height: 1.3;
+  margin-top: 0.5em;
 }
 
 .add-button {
-    margin: 0.5em;
-    font-family: "GlacialIndifference", "Arial";
-    font-size: 1.5em;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 0.2em 0.6em;
-    background-color: #EFE5D3;
-    transition-duration: 0.5s;
-    margin: 0.5em;
-    border-radius: 30px;
-
+  margin: 0.5em;
+  font-family: "GlacialIndifference", "Arial";
+  font-size: 1.5em;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.2em 0.6em;
+  background-color: #EFE5D3;
+  transition-duration: 0.5s;
+  margin: 0.5em;
+  border-radius: 30px;
 }
 
 .input-form-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .get-button {
-    font-family: "GlacialIndifference", "Arial";
-    font-size: 1em;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    border-radius: 35px;
-    cursor: pointer;
-    padding: 1.2em;
-    background-color: #EFE5D3;
-    transition-duration: 0.5s;
-    margin: 1em;
+  font-family: "GlacialIndifference", "Arial";
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 35px;
+  cursor: pointer;
+  padding: 1.2em;
+  background-color: #EFE5D3;
+  transition-duration: 0.5s;
+  margin: 1em;
 }
 
-.get-button:hover {
-    background-color: #7ABE62;
-    transform:scale(1.05);
+.get-button:hover, .add-button:hover {
+  background-color: #7ABE62;
+  transform: scale(1.05);
 }
 
-input, select, textarea {
-    font-size: 1.2em;
-    font-family: "GlacialIndifference", "Arial";
-    padding: 0.5em;
-    margin: 0.5em;
-    border-radius: 5px;
-    box-sizing: border-box;
+input,
+select,
+textarea {
+  font-size: 1.2em;
+  font-family: "GlacialIndifference", "Arial";
+  padding: 0.5em;
+  margin: 0.5em;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.recipe-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-left: 4em;
+  margin-right: 4em;
+  margin-top: 4em;
+  padding-bottom: 4em;
+  justify-content: center;
+}
+
+.recipe-card {
+  justify-self: center;
+  position: relative;
+  background-color: white;
+  width: 320px;
+  padding: 1em;
+  box-shadow: 0 3px 10px 0 #aaa;
+  cursor: pointer;
+}
+
+.recipe-card:hover {
+  border: black solid 1px;
+}
+
+.recipe-url {
+  text-decoration: none;
+  color: black;
 }
