@@ -18,7 +18,8 @@ h1 {
     font-size: 4em;
     letter-spacing: 0.17em;
     margin-top: 0em;
-    margin-bottom: 0.15em;
+    margin-bottom: 0.03em;
+    padding-top: 1.2em;
 }
 
 h2 {
@@ -27,13 +28,12 @@ h2 {
     font-weight: 400;
     letter-spacing: 0.15em;
     margin-top: 0px;
-    margin-bottom: 1em;
+    margin-bottom: 1.2em;
 }
 
 .HomePage {
     min-height: 100vh;
     background-color: #BDE2E6;
-    padding-top: 5.5em;
     padding-left: 7em;
 }
 
@@ -54,7 +54,16 @@ h2 {
 .getButton {
     font-family: "GlacialIndifference", "Arial";
     font-size: 1.2em;
+    font-weight: 700;
+    letter-spacing: 0.05em;
     border-radius: 35px;
     cursor: pointer;
     padding: 1.2em;
+    background-color: #EFE5D3;
+    transition-duration: 0.5s;
+}
+
+.getButton:hover {
+    background-color: #7ABE62;
+    transform:scale(1.05);
 }
