@@ -6,7 +6,6 @@ export const IngredientsInputs = () => {
   const [displayRecipes, setDisplayRecipes] = useState(false);
   const [recipes, getRecipes] = useState({ e: false, m: "" });
   const [error, setError] = useState({ e: false, m: "" });
-  let page = 0;
 
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
@@ -19,9 +18,10 @@ export const IngredientsInputs = () => {
     setInputList([...inputList, { ingredient: "" }]);
   };
 
-  const showRecipes = (input, page) => {
+  const showRecipes = (input) => {
     let ingList = [];
     let recList = [];
+    let cards = [];
 
     // create list of ingredients
     input.forEach((ing) => {
@@ -46,15 +46,29 @@ export const IngredientsInputs = () => {
     if (recList.length > 0) { // show cards if recList has recipes
       setDisplayRecipes(true);
       setError({ e: false, m: "" });
-      page++;
     }
     else { // show error
       setDisplayRecipes(false);
       setError({ e: true, m: "No recipes for the corresponding ingredient(s)." });
-      page = 0;
     }
 
-    getRecipes(recList);
+    // shuffle and randomly get 3 recipes from recList to display
+    if (recList.length > 3) {
+      let currentIndex = recList.length;
+      let randomIndex;
+
+      while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        [recList[currentIndex], recList[randomIndex]] = [recList[randomIndex], recList[currentIndex]];
+      }
+
+      cards = recList.slice(0, 3);
+      getRecipes(cards);
+    }
+    else {
+      getRecipes(recList);
+    }
   }
 
   const checkIfImageExists = (url) => {
@@ -97,8 +111,8 @@ export const IngredientsInputs = () => {
           </div>
           
         </div>
- 
-        <button className="get-button" onClick={e => showRecipes(inputList, page)}>Get Recipes!</button>
+
+        <button className="get-button" onClick={e => showRecipes(inputList)}>Get Recipes!</button>
         {console.log(JSON.stringify(inputList))}
       </div>
 
