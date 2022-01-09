@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { IngredientsInputs } from "../components/IngredientsInputs";
 
 export class RecipesPage extends Component {
   render() {
@@ -7,22 +8,7 @@ export class RecipesPage extends Component {
         <h1 className="recipes-header">
           INPUT INGREDIENT(S)!
         </h1>
-        <form>
-          <label>
-            Ingredient 1:
-            <input type="text" name="ingredient1" />
-          </label>
-          <br/>
-          <label>
-            Ingredient 2:
-            <input type="text" name="ingredient2" />
-          </label>
-          <br/>
-          <label>
-            Ingredient 3:
-            <input type="text" name="ingredient3" />
-          </label>
-        </form>
+        <IngredientsInputs/>
       </div>
     )
   }
