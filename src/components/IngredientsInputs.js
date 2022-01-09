@@ -91,10 +91,13 @@ export const IngredientsInputs = () => {
               </div>
             );
           })}
+          
+          <div>
+            {inputList.length < 3 && <button className="add-button" onClick={handleAddClick}>+</button>}
+          </div>
+          
         </div>
-        <div className="add-button">
-          {inputList.length < 3 && <button onClick={handleAddClick}>+</button>}
-        </div>
+ 
         <button className="get-button" onClick={e => showRecipes(inputList, page)}>Get Recipes!</button>
         {console.log(JSON.stringify(inputList))}
       </div>
