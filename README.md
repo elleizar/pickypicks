@@ -5,6 +5,8 @@ Devpost: https://devpost.com/software/pickypicks
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Deployed using Heroku: https://pickypicks.herokuapp.com/
+
 ## Inspiration
 Our idea started out with a friend talking about how they wanted to try more foods, but always ended up sticking to the ingredients they like. We wanted to create a tool that would help them explore new foods in a fun way, while also using their favourite ingredients to create these dishes.
 
@@ -45,7 +47,7 @@ Install the dependencies.
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3001](http://localhost:3001) to view it in your browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
