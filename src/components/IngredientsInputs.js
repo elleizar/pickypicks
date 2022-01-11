@@ -19,6 +19,29 @@ export const IngredientsInputs = () => {
     setInputList([...inputList, { ingredient: "" }]);
   };
 
+  function checkURL(url, callback) {
+    let request = new XMLHttpRequest();
+    request.open('GET', url, true);
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    request.setRequestHeader('Accept', '*/*');
+    request.setRequestHeader('Access-Control-Allow-Origin', '*');
+    request.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+    request.setRequestHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    request.onprogress = function (event) {
+      let status = event.target.status;
+      let statusFirstNumber = (status).toString()[0];
+      switch (statusFirstNumber) {
+        case '2':
+          request.abort();
+          return callback(true);
+        default:
+          request.abort();
+          return callback(false);
+      };
+    };
+    request.send('');
+  };
+
   const showRecipes = (input) => {
     let ingList = [];
     let recList = [];
@@ -37,9 +60,14 @@ export const IngredientsInputs = () => {
     ingList.forEach((ing) => {
       recipeData.forEach((rec) => {
         if (rec.ingredients.toLowerCase().includes(ing.toLowerCase())) {
+          // check if not a duplicate
           if (!recList.includes(rec)) {
-            //push into recList if yes and not a duplicate
-            recList.push(rec);
+            // check if link works
+            checkURL(rec.url, function (exists) {
+              if (exists) {
+                recList.push(rec);
+              }
+            });
           }
         }
       })
