@@ -1,7 +1,5 @@
 # pickypicks
-Project for SheHacks+VI
-
-Devpost: https://devpost.com/software/pickypicks
+Project for SheHacks+VI - Vist the Devpost [here](https://devpost.com/software/pickypicks) and the hackathon branch [here](https://github.com/elleizar/pickypicks/tree/hackathon).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

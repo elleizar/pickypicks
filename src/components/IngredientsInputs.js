@@ -80,7 +80,7 @@ export const IngredientsInputs = () => {
         <div className="input-form-container">
           {inputList.map((x, i) => {
             return (
-              <div className="input-ingredient">
+              <div className="input-ingredient" key={i} >
                 <input
                   name="ingredient"
                   placeholder="Enter ingredient"
@@ -121,9 +121,8 @@ export const IngredientsInputs = () => {
                 {/* check if image exists, else replace with logo */}
                 <img
                   className="recipe-image"
-                  width="320px"
-                  height="250px"
-                  src={rec.image ? rec.image : logo}
+                  width="100%"
+                  src={rec.image}
                   alt={rec.name}
                   onError={(event) => {
                     event.target.src = logo
