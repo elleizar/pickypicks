@@ -27,9 +27,9 @@ export const IngredientsInputs = () => {
     request.open('GET', url, true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
     request.setRequestHeader('Accept', '*/*');
-    request.setRequestHeader('Access-Control-Allow-Origin', '*');
-    request.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
-    request.setRequestHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    // request.setRequestHeader('Access-Control-Allow-Origin', '*');
+    // request.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+    // request.setRequestHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
     request.onprogress = function (event) {
       let status = event.target.status;
       let statusFirstNumber = (status).toString()[0];
