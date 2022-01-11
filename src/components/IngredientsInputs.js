@@ -19,32 +19,6 @@ export const IngredientsInputs = () => {
     setInputList([...inputList, { ingredient: "" }]);
   };
 
-  function checkURL(url, callback) {
-    let request = new XMLHttpRequest();
-    if (url.match(/^http:\/\//i)) {
-      url = url.replace(/^http:\/\//i, 'https://')
-    }
-    request.open('GET', url, true);
-    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-    request.setRequestHeader('Accept', '*/*');
-    // request.setRequestHeader('Access-Control-Allow-Origin', '*');
-    // request.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
-    // request.setRequestHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
-    request.onprogress = function (event) {
-      let status = event.target.status;
-      let statusFirstNumber = (status).toString()[0];
-      switch (statusFirstNumber) {
-        case '2':
-          request.abort();
-          return callback(true);
-        default:
-          request.abort();
-          return callback(false);
-      };
-    };
-    request.send('');
-  };
-
   const showRecipes = (input) => {
     let ingList = [];
     let recList = [];
@@ -65,13 +39,8 @@ export const IngredientsInputs = () => {
         if (rec.ingredients.toLowerCase().includes(ing.toLowerCase())) {
           // check if not a duplicate
           if (!recList.includes(rec)) {
-            // check if link works
-            // to test locally, just push rec to recList
-            checkURL(rec.url, function (exists) {
-              if (exists) {
-                recList.push(rec);
-              }
-            });
+            // TODO: check if link works
+            recList.push(rec);
           }
         }
       })
@@ -154,7 +123,7 @@ export const IngredientsInputs = () => {
                   className="recipe-image"
                   width="320px"
                   height="250px"
-                  src={rec.image}
+                  src={rec.image ? rec.image : logo}
                   alt={rec.name}
                   onError={(event) => {
                     event.target.src = logo
