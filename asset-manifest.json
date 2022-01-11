@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/pickypicks/static/css/main.ca98e690.chunk.css",
+    "main.js": "/pickypicks/static/js/main.c7f2db3e.chunk.js",
+    "main.js.map": "/pickypicks/static/js/main.c7f2db3e.chunk.js.map",
+    "runtime-main.js": "/pickypicks/static/js/runtime-main.6d8dc8a2.js",
+    "runtime-main.js.map": "/pickypicks/static/js/runtime-main.6d8dc8a2.js.map",
+    "static/js/2.439ad63c.chunk.js": "/pickypicks/static/js/2.439ad63c.chunk.js",
+    "static/js/2.439ad63c.chunk.js.map": "/pickypicks/static/js/2.439ad63c.chunk.js.map",
+    "static/js/3.2ae17052.chunk.js": "/pickypicks/static/js/3.2ae17052.chunk.js",
+    "static/js/3.2ae17052.chunk.js.map": "/pickypicks/static/js/3.2ae17052.chunk.js.map",
+    "index.html": "/pickypicks/index.html",
+    "static/css/main.ca98e690.chunk.css.map": "/pickypicks/static/css/main.ca98e690.chunk.css.map",
+    "static/js/2.439ad63c.chunk.js.LICENSE.txt": "/pickypicks/static/js/2.439ad63c.chunk.js.LICENSE.txt",
+    "static/media/Recipes.css": "/pickypicks/static/media/GlacialIndifference-Regular.663a1c12.otf",
+    "static/media/background.49c9b694.png": "/pickypicks/static/media/background.49c9b694.png",
+    "static/media/background2.209ad19f.png": "/pickypicks/static/media/background2.209ad19f.png",
+    "static/media/favicon.40dcef5f.ico": "/pickypicks/static/media/favicon.40dcef5f.ico"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6d8dc8a2.js",
+    "static/js/2.439ad63c.chunk.js",
+    "static/css/main.ca98e690.chunk.css",
+    "static/js/main.c7f2db3e.chunk.js"
+  ]
+}
