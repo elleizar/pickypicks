@@ -21,6 +21,9 @@ export const IngredientsInputs = () => {
 
   function checkURL(url, callback) {
     let request = new XMLHttpRequest();
+    if (url.match(/^http:\/\//i)) {
+      url = url.replace(/^http:\/\//i, 'https://')
+    }
     request.open('GET', url, true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
     request.setRequestHeader('Accept', '*/*');
@@ -63,6 +66,7 @@ export const IngredientsInputs = () => {
           // check if not a duplicate
           if (!recList.includes(rec)) {
             // check if link works
+            // to test locally, just push rec to recList
             checkURL(rec.url, function (exists) {
               if (exists) {
                 recList.push(rec);
