@@ -124,7 +124,7 @@ export const IngredientsInputs = () => {
             {inputList.length > 1 && inputList.length <= 3 && <button className="remove-button" onClick={handleRemoveClick}>-</button>}
           </div>
         </div>
-        <div className="input-checkbox-container">
+        <div className="input-radio-container">
           <label>
             <input
               name="individual"

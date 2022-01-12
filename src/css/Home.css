@@ -83,3 +83,41 @@ h2 {
   background-color: #7ABE62;
   transform: scale(1.05);
 }
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-family: "GlacialIndifference-Bold", "Arial";
+    font-size: 2.5em;
+    letter-spacing: 0.1em;
+    margin-top: 0em;
+    margin-bottom: 0.02em;
+    padding-top: 1.2em;
+  }
+
+  h2 {
+    font-family: "GlacialIndifference", "Arial";
+    font-size: 1.5em;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    margin-top: 0px;
+    margin-bottom: 1.2em;
+  }
+
+  .HomePage {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+
+  .home-header-container {
+    display: flex;
+    padding-top: 4em;
+  }
+
+  .body-text {
+    padding-bottom: 1em;
+    font-family: "GlacialIndifference", "Arial";
+    font-size: 1.3em;
+    width: 100%;
+    line-height: 1.3;
+  }
+}
