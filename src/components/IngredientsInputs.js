@@ -7,6 +7,8 @@ export const IngredientsInputs = () => {
   const [displayRecipes, setDisplayRecipes] = useState(false);
   const [recipes, getRecipes] = useState({ e: false, m: "" });
   const [error, setError] = useState({ e: false, m: "" });
+  const [onChangeValue, setOnChangeValue] = useState("individual");
+  const scrollToDiv = React.createRef();
 
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
@@ -19,24 +21,49 @@ export const IngredientsInputs = () => {
     setInputList([...inputList, { ingredient: "" }]);
   };
 
+  const handleRemoveClick = () => {
+    const list = [...inputList];
+    list.splice(list.length - 1, 1);
+    setInputList(list);
+  };
+
   const showRecipes = (input) => {
     let ingList = [];
     let recList = [];
     let cards = [];
 
+    // scroll into view
+    scrollToDiv.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    })
+
     // create list of ingredients
     input.forEach((ing) => {
       if (ing.ingredient.length) {
         if (!ingList.includes(ing.ingredient)) {
-          ingList.push(ing.ingredient);
+          ingList.push(ing.ingredient.toLowerCase());
         }
       }
     });
 
     // check if ingredient in list is in recipe
-    ingList.forEach((ing) => {
+    if (onChangeValue === "individual" || ingList.length === 1) {
+      ingList.forEach((ing) => {
+        recipeData.forEach((rec) => {
+          if (rec.ingredients.toLowerCase().includes(ing)) {
+            // check if not a duplicate
+            if (!recList.includes(rec)) {
+              // TODO: check if link works
+              recList.push(rec);
+            }
+          }
+        })
+      })
+    }
+    else if (onChangeValue === "combination") {
       recipeData.forEach((rec) => {
-        if (rec.ingredients.toLowerCase().includes(ing.toLowerCase())) {
+        if (ingList.every((ing) => rec.ingredients.toLowerCase().includes(ing))) {
           // check if not a duplicate
           if (!recList.includes(rec)) {
             // TODO: check if link works
@@ -44,8 +71,9 @@ export const IngredientsInputs = () => {
           }
         }
       })
-    })
+    }
 
+    // error check on recList
     if (recList.length > 0) { // show cards if recList has recipes
       setDisplayRecipes(true);
       setError({ e: false, m: "" });
@@ -93,25 +121,46 @@ export const IngredientsInputs = () => {
 
           <div>
             {inputList.length < 3 && <button className="add-button" onClick={handleAddClick}>+</button>}
+            {inputList.length > 1 && inputList.length <= 3 && <button className="remove-button" onClick={handleRemoveClick}>-</button>}
           </div>
-
         </div>
-
-        <button className="get-button" onClick={e => showRecipes(inputList)}>Get Recipes!</button>
+        <div className="input-checkbox-container">
+          <label>
+            <input
+              name="individual"
+              type="radio"
+              checked={onChangeValue === "individual"}
+              onChange={() => setOnChangeValue("individual")}
+            />
+            Individual Ingredients
+          </label>
+          <label>
+            <input
+              name="combination"
+              type="radio"
+              checked={onChangeValue === "combination"}
+              onChange={() => setOnChangeValue("combination")}
+            />
+            Combination of Ingredients
+          </label>
+        </div>
       </div>
 
-      {/* error */}
-      {error.e &&
-        <div className="error-message">
-          {error.m}
-        </div>
-      }
+      <div className="action-container" ref={scrollToDiv}>
+        <button className="get-button" onClick={e => showRecipes(inputList)}>Get Recipes!</button>
 
-      {displayRecipes &&
-        <div className="tip">
-          Don't like these recipes? Click Get Recipes again!
-        </div>
-      }
+        {error.e &&
+          <div className="error-message">
+            {error.m}
+          </div>
+        }
+
+        {displayRecipes &&
+          <div className="tip">
+            Don't like these recipes? Click Get Recipes again!
+          </div>
+        }
+      </div>
       <div className="recipe-container">
         {/* recipe card */}
         {displayRecipes && recipes.map((rec, key) => {
@@ -119,23 +168,26 @@ export const IngredientsInputs = () => {
             <div className="recipe-card" key={key}>
               <a className="recipe-url" href={rec.url} target="_blank" rel="noreferrer">
                 {/* check if image exists, else replace with logo */}
-                <img
-                  className="recipe-image"
-                  width="100%"
-                  src={rec.image}
-                  alt={rec.name}
-                  onError={(event) => {
-                    event.target.src = logo
-                    event.onError = null
-                  }}
-                />
+                <div className="recipe-image-container">
+                  <img
+                    className="recipe-image"
+                    width="100%"
+                    height="100%"
+                    src={rec.image ? rec.image : logo}
+                    alt={rec.name}
+                    onError={(event) => {
+                      event.target.src = logo
+                      event.onError = null
+                    }}
+                  />
+                </div>
                 <br />
                 <div className="recipe-name">{rec.name}</div>
                 <br />
                 <div className="recipe-ing-header">
                   Ingredients
                 </div>
-                <div className="recipe-ingredients">{rec.ingredients}</div>
+                <div className="recipe-ingredients" >{rec.ingredients}</div>
               </a>
             </div>
           );

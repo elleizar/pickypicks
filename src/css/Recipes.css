@@ -38,7 +38,10 @@ h2 {
   text-align: center;
 }
 
-.instructions, .error-message, .tip, .recipe-card {
+.instructions,
+.error-message,
+.tip,
+.recipe-card {
   font-family: "GlacialIndifference", "Arial";
   font-size: 1.3em;
   line-height: 1.3;
@@ -52,7 +55,8 @@ h2 {
   margin-top: 0.5em;
 }
 
-.add-button {
+.add-button,
+.remove-button {
   margin: 0.5em;
   font-family: "GlacialIndifference", "Arial";
   font-size: 1.5em;
@@ -83,11 +87,14 @@ h2 {
   margin: 1em;
 }
 
-.get-button:hover, .add-button:hover {
+.get-button:hover,
+.add-button:hover,
+.remove-button:hover {
   background-color: #7ABE62;
   transform: scale(1.05);
 }
 
+label,
 input,
 select,
 textarea {
@@ -126,4 +133,9 @@ textarea {
 .recipe-url {
   text-decoration: none;
   color: black;
+}
+
+.recipe-image-container {
+  width: 100%;
+  height: 22vw;
 }
